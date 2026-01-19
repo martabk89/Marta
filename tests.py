@@ -2,6 +2,24 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
+from django.test import TestCase
+from django.utils import timezone
+from .models import Question
+import datetime
+from django.test import TestCase
+from django.utils import timezone
+from .models import Question
+
+class BasicTest(TestCase):
+    def test_create_question(self):
+        q = Question.objects.create(question_text="Test", pub_date=timezone.now())
+        self.assertEqual(Question.objects.count(), 1)
+
+
+class QuestionModelTests(TestCase):
+    def test_question_str(self):
+        q = Question(question_text="Hola", pub_date=timezone.now())
+        self.assertEqual(str(q), "Hola")
  
 class MySeleniumTests(StaticLiveServerTestCase):
     # carregar una BD de test
