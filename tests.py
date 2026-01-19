@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
  
 class MySeleniumTests(StaticLiveServerTestCase):
     # carregar una BD de test
-    #fixtures = ['testdb.json',]
+    fixtures = ['testdb.json',]
 
 @classmethod
     def setUpClass(cls):
